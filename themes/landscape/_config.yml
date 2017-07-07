@@ -1,0 +1,50 @@
+# Header
+menu:
+  Home: /
+  Archives: /archives
+rss: /atom.xml
+
+# Content
+excerpt_link: Read More
+fancybox: true
+
+# Sidebar
+sidebar: right
+widgets:
+- category
+- tag
+- tagcloud
+- archive
+- recent_posts
+
+# display widgets at the bottom of index pages (pagination == 2)
+index_widgets:
+# - category
+# - tagcloud
+# - archive
+
+# widget behavior
+archive_type: 'monthly'
+show_count: false
+
+# Miscellaneous
+google_analytics:
+favicon: /favicon.png
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:
+- name: Materialize
+  description: A clean materialize css theme with home page layout different than the other pages
+  link: https://github.com/carlos-algms/hexo-theme-materialize
+  preview: http://carlos-algms.github.io/
+  tags:
+    - clean
+    - Materialize CSS
+    - responsive
+    - elegant
+    - Home page
+    - Blog
+    - Custom pages
+    - About page
+    - simple
