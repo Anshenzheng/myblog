@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 果果乐园
+title: 知乐园
 subtitle: 
 description: 千里之行, 始于足下
 author: Annan An
-language:
+language: zh-Hans
 timezone:
 
 # URL
