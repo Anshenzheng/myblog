@@ -4,6 +4,7 @@ tags: ["分布式","ID"]
 categories: "架构"
 ---
 一般而言，几乎在任何系统中，我们都需要使用唯一的ID去识别以及操作应用中的对象，比如对用户管理而言需要用户ID，对订单管理而言需要订单ID。
+
 在小的项目中，我们可以直接使用数据库的自增长特性来生成主键的ID，这样简单且易实现。但是在分库分表的分布式环境中，数据往往分布在不同的分片上，如果再通过数据库的自增长特性，势必会造成主键重复。
 
 这就需要我们采用一些分布式全局唯一ID的生成方案，以下介绍几种常见的全局ID生成方案：
@@ -12,7 +13,7 @@ categories: "架构"
 Twitter服务器上每秒钟都会有上百万条新的Twitter消息产生，每条消息都需要分配唯一的ID，而且为了方便客户端的排序，这些ID还需要一些大致的书序，为了解决这样一个问题，Twitter创建了Snowflake算法。
 
 #### [Snowflake](https://github.com/twitter/snowflake/tree/snowflake-2010)算法核心 
-twitter生成的ID是64bits整数型，64位组成结构如下：
+Twitter生成的ID是64bits整数型，64位组成结构如下：
 标记位(1位，不可用)+时间戳(41位) + 机器ID(10位) + 序列号(12位)
 
 * 标记位
@@ -21,7 +22,7 @@ twitter生成的ID是64bits整数型，64位组成结构如下：
 * 时间戳
 时间戳有41位，可以表示的数据为0 ~ 2^41，这里的时间戳的细度是毫秒级的，那么计算可知可以使用 2^41/(365*24*60*60*1000) = 69.73年。 
 具体生成代码如下:
-```
+```Java
 uint64_t generateStamp(){
 	timeval tv;
 	gettimeofday(&tv, 0);
@@ -61,7 +62,7 @@ public static void main(String[] args){
 ```
 
 ### MongoDB ObjectID
-mongodb会为每条插入collection不包含"id"的记录自动生成一个24位字符长的objectId, 例如"4e7020cb7cac81af7136236b".
+Mongodb会为每条插入collection不包含"id"的记录自动生成一个24位字符长的objectId, 例如"4e7020cb7cac81af7136236b".
 
 这个24位的字符串实际上由一组16禁止的字符构成，每个字节两位十六禁止数字，总共用了12字节的存储空间。
 
