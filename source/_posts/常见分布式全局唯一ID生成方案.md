@@ -68,20 +68,16 @@ Mongodb会为每条插入collection不包含"id"的记录自动生成一个24位
 
 根据官网中ObjectId规范的描述，它的组成结构如下:
 ![](http://pic002.cnblogs.com/images/2011/83478/2011091823160647.png)
-*  时间戳(4bytes - 32bits)
-
+* 时间戳(4bytes - 32bits)
 将前4位进行提取，然后按照十六进制转换成十进制，就可以得到一个时间
 
-*  机器ID(3bytes - 24bits)
-
+* 机器ID(3bytes - 24bits)
 接下来3个字节是所在主机的唯一表示符，一般是主机名的散列值。
 
-*  进程ID - PID(2bytes - 16bits)
-
+* 进程ID - PID(2bytes - 16bits)
 pid是为了在同一机器下不同mongodb进程产生的objectID不冲突。
 
-*  自增计数器 - INC(3bytes - 24bits)
-
+* 自增计数器 - INC(3bytes - 24bits)
 确保同一秒内产生的objectId也不会冲突。
 
 参考文章：[MongoDB深究之ObjectId](http://www.cnblogs.com/xjk15082/archive/2011/09/18/2180792.html) 
