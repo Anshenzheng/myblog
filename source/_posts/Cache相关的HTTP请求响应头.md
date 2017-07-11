@@ -3,7 +3,7 @@ title: Cache相关的HTTP请求/响应头
 tags: ["cache","http","web"]
 categories: "前端"
 ---
-### 
+
 常见的HTTP请求/响应头有很多，以下介绍几种cache相关的：
 
 * Pragma
