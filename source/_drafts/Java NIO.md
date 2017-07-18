@@ -123,7 +123,7 @@ public class NIOServer{
       server = (ServerSocketChannel)selectionKey.channel();
       client = server.accept();
       client.configureBlocking(false);
-      client.register(selector, selectionKey.OP_READ);
+      client.register(selector, SelectionKey.OP_READ);
     }else if(selectionKey.isReadable()){
       client = (SocketChannel)selectionKey.channel();
       count = client.read(receiveBuffer);
